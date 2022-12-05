@@ -22,10 +22,7 @@ object McScriptCompilationConfiguration : ScriptCompilationConfiguration(
     defaultImports(DependsOn::class, Repository::class)
 
     jvm {
-      dependenciesFromCurrentContext(
-        "mc-kts",
-        "kotlin-scripting-dependencies",
-      )
+      dependenciesFromCurrentContext(wholeClasspath = true)
     }
 
     refineConfiguration {
