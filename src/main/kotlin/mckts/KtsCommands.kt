@@ -1,7 +1,7 @@
 package mckts
 
 import com.mojang.brigadier.CommandDispatcher
-import com.mojang.brigadier.arguments.StringArgumentType.string
+import com.mojang.brigadier.arguments.StringArgumentType.greedyString
 import kotlin.script.experimental.api.ScriptDiagnostic
 import kotlin.script.experimental.host.toScriptSource
 import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
@@ -16,7 +16,7 @@ object KtsCommands {
   ) {
     dispatcher.register(
       literal("kts:eval").then(
-        argument("file", string()).executes {
+        argument("file", greedyString()).executes {
           eval(it["file"])
         }
       )
