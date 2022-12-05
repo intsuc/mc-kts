@@ -6,6 +6,7 @@ import java.nio.file.Paths
 import java.security.ProtectionDomain
 import java.util.jar.JarFile
 import kotlin.io.path.createDirectories
+import kotlin.io.path.notExists
 import kotlin.io.path.outputStream
 
 @Suppress("unused")
@@ -39,18 +40,24 @@ object Agent {
             .readLines()
             .map { it.split('\t')[2] }
             .first { it.startsWith("com/mojang/brigadier/") }
-          server
-            .getInputStream(server.getEntry("META-INF/libraries/$brigadierPath"))
-            .buffered()
-            .use { brigadier ->
-              val outputPath = Paths.get("libraries", brigadierPath)
-              outputPath.parent.createDirectories()
-              outputPath
-                .outputStream()
-                .buffered()
-                .use { output -> brigadier.transferTo(output) }
-              JarFile(outputPath.toFile())
-            }
+
+          val outputPath = Paths
+            .get("libraries", brigadierPath)
+            .also { it.parent.createDirectories() }
+
+          if (outputPath.notExists()) {
+            server
+              .getInputStream(server.getEntry("META-INF/libraries/$brigadierPath"))
+              .buffered()
+              .use { brigadier ->
+                outputPath
+                  .outputStream()
+                  .buffered()
+                  .use { output -> brigadier.transferTo(output) }
+              }
+          }
+
+          JarFile(outputPath.toFile())
         }
     }
   }
