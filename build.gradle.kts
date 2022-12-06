@@ -22,7 +22,7 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
   implementation("org.ow2.asm:asm:9.4")
   implementation("com.google.guava:guava:31.1-jre")
-  implementation("org.slf4j:slf4j-api:2.0.1")
+  implementation("org.slf4j:slf4j-api:2.0.5")
   implementation("net.java.dev.jna:jna:5.12.1")
   compileOnly("com.mojang:brigadier:1.0.18")
   testImplementation(kotlin("test"))
