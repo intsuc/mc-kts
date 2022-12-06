@@ -59,9 +59,7 @@ object KtsCommands {
     source: Any,
     code: SourceCode,
   ): Int {
-    val compilationConfiguration = createJvmCompilationConfigurationFromTemplate<McScript> {
-      implicitReceivers(CommandExecutor::class)
-    }
+    val compilationConfiguration = createJvmCompilationConfigurationFromTemplate<McScript>()
     val evaluationConfiguration = createJvmEvaluationConfigurationFromTemplate<McScript> {
       implicitReceivers(CommandExecutor(dispatcher, source))
     }

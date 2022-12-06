@@ -19,7 +19,10 @@ abstract class McScript
 
 object McScriptCompilationConfiguration : ScriptCompilationConfiguration(
   {
+    defaultImports("mckts.core.*")
     defaultImports(DependsOn::class, Repository::class)
+
+    implicitReceivers(CommandExecutor::class)
 
     jvm {
       dependenciesFromCurrentContext(wholeClasspath = true)
@@ -45,6 +48,4 @@ object McScriptCompilationConfiguration : ScriptCompilationConfiguration(
   private val resolver = CompoundDependenciesResolver(FileSystemDependenciesResolver(), MavenDependenciesResolver())
 }
 
-object McScriptEvaluationConfiguration : ScriptEvaluationConfiguration(
-  {}
-)
+object McScriptEvaluationConfiguration : ScriptEvaluationConfiguration()
