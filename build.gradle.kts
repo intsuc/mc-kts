@@ -24,7 +24,7 @@ dependencies {
   implementation("com.google.guava:guava:31.1-jre")
   implementation("org.slf4j:slf4j-api:2.0.1")
   implementation("net.java.dev.jna:jna:5.12.1")
-  compileOnly("com.mojang:brigadier:1.0.18")
+  compileOnly("com.mojang:brigadier:1.0.500")
   testImplementation(kotlin("test"))
 }
 
