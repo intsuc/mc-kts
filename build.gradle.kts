@@ -18,7 +18,7 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:1.7.22")
   implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:1.7.22")
   implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies:1.7.22")
-  implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven:1.7.22")
+  implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven:1.8.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
   implementation("org.ow2.asm:asm:9.4")
   implementation("com.google.guava:guava:31.1-jre")
